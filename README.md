@@ -1,2 +1,2 @@
-opsworks-example-cookbooks
-==========================
+AWS OpsWorks Example Cookbooks
+==============================

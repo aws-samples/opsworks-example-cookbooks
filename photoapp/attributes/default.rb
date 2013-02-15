@@ -1,0 +1,1 @@
+default[:photoapp][:dbtable] = 'foto'
