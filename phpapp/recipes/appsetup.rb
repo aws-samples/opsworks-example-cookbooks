@@ -26,8 +26,7 @@ node[:deploy].each do |app_name, deploy|
       :user =>     (deploy[:database][:username] rescue nil),
       :password => (deploy[:database][:password] rescue nil),
       :db =>       (deploy[:database][:database] rescue nil),
-      :table =>    (node[:photoapp][:dbtable] rescue nil),
-      :s3bucket => (node[:photobucket] rescue nil)
+      :table =>    (node[:phpapp][:dbtable] rescue nil)
     )
 
    only_if do
