@@ -15,5 +15,3 @@ recipe "java::oracle_i386", "Installs the 32-bit jvm without setting it as the d
 %w{ debian ubuntu centos redhat scientific fedora amazon arch oracle freebsd windows }.each do |os|
   supports os
 end
-
-depends "windows"
