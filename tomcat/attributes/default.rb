@@ -44,3 +44,4 @@ when 'debian', 'ubuntu'
   default['tomcat']['group'] = "tomcat#{node['tomcat']['base_version']}"
   default['tomcat']['system_env_dir'] = '/etc/default'
 end
+default['datasources'] = {}
