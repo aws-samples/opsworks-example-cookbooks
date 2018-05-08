@@ -18,6 +18,7 @@
 ruby_block "detach from ALB" do
   block do
     require "aws-sdk-core"
+    Aws.use_bundled_cert!
 
     raise "alb_helper block not specified in layer JSON" if node[:alb_helper].nil?
     raise "Target Group ARN not specified in layer JSON" if node[:alb_helper][:target_group_arn].nil?
