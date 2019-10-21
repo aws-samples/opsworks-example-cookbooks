@@ -27,11 +27,17 @@ ruby_block "attach to ALB" do
     raise "alb_helper block not specified in layer JSON" if node[:alb_helper].nil?
     raise "Target group ARN not specified in layer JSON" if node[:alb_helper][:target_group_arn].nil?
 
-    stack = search("aws_opsworks_stack").first
-    instance = search("aws_opsworks_instance", "self:true").first
+    if ( Chef::VERSION.to_f >= 12.0 )
+      stack = search("aws_opsworks_stack").first
+      instance = search("aws_opsworks_instance", "self:true").first
 
-    stack_region = stack[:region]
-    ec2_instance_id = instance[:ec2_instance_id]
+      stack_region = stack[:region]
+      ec2_instance_id = instance[:ec2_instance_id]
+    else
+      stack_region = node["opsworks"]["instance"]["region"]
+      ec2_instance_id = node["opsworks"]["instance"]["aws_instance_id"]
+    end
+
     target_group_arn = node[:alb_helper][:target_group_arn]
 
     Chef::Log.info("Creating ELB client in region #{stack_region}")
